@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>html5可视化开发</title>
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/normalize/normalize.css">
+    <link rel="stylesheet" type="text/css" href="vendor/jquery-ui-min/jquery-ui.css">
+    <link rel="stylesheet/less" type="text/css" href="css/index.less">
+    <style type="text/css">
+    	.parent{
+
+    	}
+    </style>
+</head>
+
+<body>
+    <div class="sort">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+        <div class="item">11</div>
+        <div class="item">12</div>
+        <div class="item">13</div>
+    </div>
+</body>
+<script type="text/javascript" src="vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="vendor/jquery-ui-min/jquery-ui.js"></script>
+<script type="text/javascript" src="vendor/less/less.js"></script>
+<script type="text/javascript" src="vendor/vue/vue2.js"></script>
+<script type="text/javascript">
+$(function() {
+    $(".sort").sortable({
+    	placeholder:"sortHelper"
+    }).find(".item").resizable({
+    	grid: 5,
+    });
+});
+</script>
+
+</html>
