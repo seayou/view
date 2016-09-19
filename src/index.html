@@ -8,28 +8,47 @@
     <link rel="stylesheet" type="text/css" href="vendor/normalize/normalize.css">
     <link rel="stylesheet" type="text/css" href="vendor/jquery-ui-min/jquery-ui.css">
     <link rel="stylesheet/less" type="text/css" href="css/index.less">
+    <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
     <style type="text/css">
-    	.parent{
-
-    	}
+    .parent {}
     </style>
 </head>
 
 <body>
+    <div style="padding:1em;">
+        过程：首先得插入块级框，再才能插入行内元素或块级框或者直接插入行内元素的时候自动生成块级框
+    </div>
     <div class="sort">
-        <div class="item">1</div>
-        <div class="item">2</div>
-        <div class="item">3</div>
-        <div class="item">4</div>
-        <div class="item">5</div>
-        <div class="item">6</div>
-        <div class="item">7</div>
-        <div class="item">8</div>
-        <div class="item">9</div>
-        <div class="item">10</div>
-        <div class="item">11</div>
-        <div class="item">12</div>
-        <div class="item">13</div>
+        <div class="sort block">
+            <div class="inline">1</div>
+            <div class="inline">2</div>
+            <div class="inline">3</div>
+            <div class="inline">4</div>
+            <div class="inline">5</div>
+            <div class="inline">6</div>
+            <div class="inline">7</div>
+            <div class="inline">8</div>
+            <div class="inline">9</div>
+            <div class="inline">10</div>
+            <div class="inline">11</div>
+            <div class="inline">12</div>
+            <div class="inline">13</div>
+        </div>
+        <div class="sort block">
+            <div class="inline">11</div>
+            <div class="inline">22</div>
+            <div class="inline">33</div>
+            <div class="inline">44</div>
+            <div class="inline">55</div>
+            <div class="inline">66</div>
+            <div class="inline">77</div>
+            <div class="inline">88</div>
+            <div class="inline">99</div>
+            <div class="inline">10</div>
+            <div class="inline">11</div>
+            <div class="inline">12</div>
+            <div class="inline">13</div>
+        </div>
     </div>
 </body>
 <script type="text/javascript" src="vendor/jquery/jquery.js"></script>
@@ -39,9 +58,9 @@
 <script type="text/javascript">
 $(function() {
     $(".sort").sortable({
-    	placeholder:"sortHelper"
-    }).find(".item").resizable({
-    	grid: 5,
+        
+    }).find(".inline").resizable({
+        grid: 5,
     });
 });
 </script>

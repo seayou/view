@@ -5,7 +5,7 @@
         -ms-user-select: none;
             user-select: none;
 
-    .item
+    .inline
     {
         float: left;
 
@@ -18,11 +18,33 @@
     }
 }
 
-.sortHelper{
-		float:left;
-		width: 100px;
-        height: 100px;
-        margin: 2px;
+.sort:after
+{
+    display: block;
+    clear: both;
 
-        border:1px dashed;
+    content: ' ';
+}
+
+.block{
+    display: block;
+    border: 1px dashed;
+    clear:both;
+    padding: 1em;
+    margin:1em;
+}
+
+.block+.block{
+    margin-top:1em;
+}
+
+.sortHelper
+{
+    float: left;
+
+    width: 100px;
+    height: 100px;
+    margin: 2px;
+
+    border: 1px dashed;
 }
