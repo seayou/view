@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>html5可视化开发</title>
+    <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/normalize/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/jquery-ui-min/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <style type="text/css">
+    .parent {}
+    </style>
+</head>
+
+<body>
+    <div id="view">
+        <div class="top">
+            <div class="menu">
+            </div>
+            <div class="content">
+                <gridster :items="items"></gridster>
+            </div>
+        </div>
+        <div class="bottom">
+            <form class="form-inline styleShowForm" role="form">
+                <template v-for="(value,key) in nowElementStyles">
+                    <div class="form-group">
+                        <label class="control-label">{{key}}</label>：
+                        <!-- <input class="showInput form-control" name="" :value="value"> -->
+                        <div class="showInput" contenteditable="" @blur="styleChange($event,key)">{{value}}</div>
+                    </div>
+                </template>
+            </form>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="../vendor/jquery-ui-min/jquery-ui.js"></script>
+<script type="text/javascript" src="../vendor/lodash/lodash.min.js"></script>
+<script type="text/javascript" src="../vendor/vue/vue2.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
+<script type="text/javascript">
+view.init();
+</script>
+
+</html>
