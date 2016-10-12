@@ -1,50 +1,64 @@
-.sort
+@import url(./elements.less);
+body
 {
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-
-    .inline
+    overflow: hidden;
+}
+#view
+{
+    .styleShowForm
     {
-        float: left;
-
-        width: 100px;
-        height: 100px;
-        margin: 2px;
-
-        color: white;
-        background-color: red;
+        .form-group{
+            margin-right:1em;
+            padding-right:1em;
+        }
+        .showInput
+        {
+            display: inline;
+            border: none;
+            border-bottom: 1px solid;
+            border-radius: 0;
+            background-color: transparent;
+            &:focus
+            {
+                outline: none;
+            }
+        }
     }
-}
+    .choose
+    {
+        box-shadow: 0 0 10px red;
+    }
+    .top
+    {
+        width: 100%;
 
-.sort:after
-{
-    display: block;
-    clear: both;
+        border: 1px solid;
+        .menu
+        {
+            float: left;
 
-    content: ' ';
-}
+            width: 15%;
+            height: 100%;
 
-.block{
-    display: block;
-    border: 1px dashed;
-    clear:both;
-    padding: 1em;
-    margin:1em;
-}
+            border-right: 1px solid;
+        }
+        .content
+        {
+            float: left;
+            overflow: auto;
 
-.block+.block{
-    margin-top:1em;
-}
+            width: 85%;
+            height: 100%;
+            #gridster
+            {
+                min-height: 100px;
+            }
+        }
+    }
+    .bottom
+    {
+        width: 100%;
 
-.sortHelper
-{
-    float: left;
-
-    width: 100px;
-    height: 100px;
-    margin: 2px;
-
-    border: 1px dashed;
+        border: 1px solid;
+    }
 }
