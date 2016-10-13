@@ -5,24 +5,9 @@ body
 }
 #view
 {
-    .styleShowForm
-    {
-        .form-group{
-            margin-right:1em;
-            padding-right:1em;
-        }
-        .showInput
-        {
-            display: inline;
-            border: none;
-            border-bottom: 1px solid;
-            border-radius: 0;
-            background-color: transparent;
-            &:focus
-            {
-                outline: none;
-            }
-        }
+    .ui-sortable-placeholder{
+        display:inline-block;
+        vertical-align: top;
     }
     .choose
     {
@@ -58,7 +43,78 @@ body
     .bottom
     {
         width: 100%;
+        height: 100%;
+        padding: 1em;
 
         border: 1px solid;
+
+        .search();
+        .type
+        {
+            float: left;
+
+            width: 20%;
+            height: 100%;
+            padding-right: 1em;
+
+            border-right: 1px solid;
+        }
+        .detail
+        {
+            float: left;
+
+            width: 80%;
+            height: 100%;
+            padding-left: 1em;
+            .styleShowForm
+            {
+                height:80%;
+                overflow: auto;
+                .form-group
+                {
+                    display: flex;
+
+                    width: 100%;
+
+                    flex-wrap: wrap;
+                }
+                .cell
+                {
+                    padding: .5em 0;
+                    white-space: nowrap;
+                }
+                .showInput
+                {
+                    display: inline;
+
+                    border: none;
+                    border-bottom: 1px solid;
+                    border-radius: 0;
+                    background-color: transparent;
+                    &:focus
+                    {
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.search()
+{
+    .search
+    {
+        font-weight: normal;
+
+        margin-left: 1em;
+
+        border: none;
+        border-bottom: 1px solid #d5d1d1;
+        background-color: transparent;
+        &:focus
+        {
+            outline: none;
+        }
     }
 }
