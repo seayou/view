@@ -42,6 +42,13 @@ body
     }
     .bottom
     {
+        .tool{
+            position:absolute;
+            right:1em;
+            a{
+                text-decoration: none;
+            }
+        }
         width: 100%;
         height: 100%;
         padding: 1em;
@@ -58,6 +65,9 @@ body
             padding-right: 1em;
 
             border-right: 1px solid;
+            select{
+                height:e("calc(100% - 24px)");
+            }
         }
         .detail
         {
@@ -83,11 +93,15 @@ body
                     padding: .5em 0;
                     min-width:300px;
                     white-space: nowrap;
+
+                    select{
+                        height:30px;
+                    }
                 }
                 .showInput
                 {
                     display: inline;
-
+                    
                     border: none;
                     border-bottom: 1px solid;
                     border-radius: 0;
@@ -99,6 +113,13 @@ body
                 }
             }
         }
+    }
+    .flyWindow{
+        position: fixed;
+        background-color: white;
+        border:2px solid;
+        top:0;
+        left:0;
     }
 }
 

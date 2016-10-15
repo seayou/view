@@ -23,25 +23,39 @@
             </div>
         </div>
         <div class="bottom">
+            <div class="tool"><a href="javascript:" @click="popWindow($event)">浮动此窗口</a></div>
             <div class="type">
-                <label class="control-label">分类:</label>
+                <label class="control-label">分类:<input class="search" placeholder="搜索分类" @keypress="searchInputKeyPress($event)" v-model="typeSearch"></label>
                 <select multiple class="form-control">
                     <option @click="changeType('全部')" :selected="nowType=='全部'">全部</option>
-                    <option v-for="(value,key) in nowElementStyles" @click="changeType(value.name)" :selected="nowType==value.name">{{value.name}}</option>
+                    <option v-for="(value,key) in nowElementStyles" @click="changeType(value.name)" :selected="nowType==value.name" v-show="value.name.indexOf(typeSearch.toLowerCase())!=-1">{{value.name}}</option>
                 </select>
             </div>
             <div class="detail">
-                <label class="control-label">属性:<input class="search" placeholder="搜索属性: width" @keypress="searchInputKeyPress($event)" v-model="nowDeatil"></label>
+                <label class="control-label">属性:
+                    <input class="search" placeholder="搜索属性: width" @keypress="searchInputKeyPress($event)" v-model="nowDeatil">
+                </label>
                 <br>
                 <form class="form-inline styleShowForm" role="form">
                     <template v-for="(value,key) in nowElementStyles">
                         <div class="form-group" v-show="value.name==nowType || nowType=='全部'">
                             <template v-for="(subvalue,subkey) in value">
-                                <div class="cell" v-show="subkey!='name' && subkey.indexOf(nowDeatil.toLowerCase())!=-1">
-                                    <label class="control-label" >{{subkey}}：</label>
+                                <!--当type为text时-->
+                                <div class="cell" v-show="subkey!='name' && subkey.indexOf(nowDeatil.toLowerCase())!=-1 && (subvalue.type=='' || subvalue=='text')">
+                                    <label class="control-label">{{subkey}}：</label>
                                     <!-- <input class="showInput form-control" name="" :value="value"> -->
-                                    <input v-if="subkey.indexOf('-')==-1" class="showInput" @change="styleChange($event,subkey)" v-model="nowElement.style[subkey]" :size="value.length" />
-                                    <input v-else class="showInput" @change="styleChange($event,subkey)" v-model="nowElement.style[(subkey.split('-')[0]+_.upperFirst(subkey.split('-')[1]))]" :size="value.length" />
+                                    <input :type="subvalue.type || 'text'" v-if="subkey.indexOf('-')==-1" class="showInput" @change="styleChange($event,subkey)" :value="nowElement.style[subkey]" :size="value.length" :placeholder="subvalue.default" :title="subvalue.placeholder"/>
+                                    <input v-else :type="subvalue.type || 'text'" class="showInput" @change="styleChange($event,(subkey.split('-')[0]+_.upperFirst(subkey.split('-')[1])))" :value="nowElement.style[(subkey.split('-')[0]+_.upperFirst(subkey.split('-')[1]))]" :size="value.length" :placeholder="subvalue.default" :title="subvalue.placeholder"/>
+                                </div>
+                                <!--当type为select时-->
+                                <div class="cell" v-show="subkey!='name' && subkey.indexOf(nowDeatil.toLowerCase())!=-1 && (subvalue.type=='select')">
+                                    <label class="control-label">{{subkey}}：</label>
+                                    <select class="form-control" v-if="subkey.indexOf('-')==-1" :value="nowElement.style[subkey]" @change="styleChange($event,subkey)">
+                                        <option v-for="item in subvalue.selectValues">{{item}}</option>
+                                    </select>
+                                    <select class="form-control" v-else :value="nowElement.style[(subkey.split('-')[0]+_.upperFirst(subkey.split('-')[1]))]" @change="styleChange($event,(subkey.split('-')[0]+_.upperFirst(subkey.split('-')[1])))">
+                                        <option v-for="item in subvalue.selectValues">{{item}}</option>
+                                    </select>
                                 </div>
                             </template>
                     </template>
@@ -55,7 +69,9 @@
 <script type="text/javascript" src="../vendor/jquery/jquery.js"></script>
 <script type="text/javascript" src="../vendor/jquery-ui-min/jquery-ui.js"></script>
 <script type="text/javascript" src="../vendor/lodash/lodash.min.js"></script>
+<script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../vendor/vue/vue2.js"></script>
+<script type="text/javascript" src="../js/styleObject.js"></script>
 <script type="text/javascript" src="../js/index.js"></script>
 <script type="text/javascript">
 view.init();
